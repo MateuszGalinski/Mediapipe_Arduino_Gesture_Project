@@ -9,14 +9,22 @@ It sets up the serial connection with an Arduino board connected to the COM3 por
 
 The code initializes the webcam video capture using cv2.VideoCapture(0) and sets up the hand tracking using the mp_hands.Hands() module from Mediapipe. It also initializes the mp_draw module for drawing landmarks on the camera video.
 
+
 There are several utility functions:
+
   write_read_to_arduino: Writes data to the Arduino and reads the response.
+  
   detect_if_hand_right: Checks if the detected hand is the right hand based on the classification label. It also displays a message on the camera video if 
   the hand is not the right hand or if both hands are detected.
+  
   track_tumb: Tracks the thumb landmarks and returns relevant coordinates for gesture detection.
+  
   is_thumb_up: Checks if the thumb is raised in a thumbs-up gesture based on the thumb landmarks and other coordinates.
+  
   track_finger: Tracks the landmarks of a specific finger and returns relevant coordinates for gesture detection.
+  
   is_finger_up: Checks if a specific finger is raised based on the finger landmarks and coordinates.
+
 
 The main function is the main entry point of the program. It reads frames from the webcam, flips the frames horizontally, and processes them using the hand tracking model. It draws landmarks on the camera video and checks for various hand gestures. If the hand is detected as the right hand, it sends the number of raised fingers to the Arduino board using the write_read_to_arduino function.
 
